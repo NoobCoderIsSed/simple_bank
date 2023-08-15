@@ -6,10 +6,18 @@ document.getElementById('btn-withdraw').addEventListener('click', function(){
     const prevwithdrawElement = document.getElementById('withdrawtotal')
     const prevwithdarwAmount = prevwithdrawElement.innerText;
     const prevwithdarwAmountInt = parseFloat(prevwithdarwAmount);
-    const totalwithdraw = newwithdarwAmountInt + prevwithdarwAmountInt
-    prevwithdrawElement.innerText = totalwithdraw;
-    newwithdraw.value = '';
+    
     const balancetotal = document.getElementById('balance-total');
     const balancetotalInt = parseFloat(balancetotal.innerText);
+    newwithdraw.value = '';
+
+    if(newwithdarwAmountInt > balancetotalInt){
+        alert('Insufficient Funds');
+        return;
+    }
+
+    const totalwithdraw = newwithdarwAmountInt + prevwithdarwAmountInt
+    prevwithdrawElement.innerText = totalwithdraw;
+    
     balancetotal.innerText = balancetotalInt - newwithdarwAmountInt;
 });
